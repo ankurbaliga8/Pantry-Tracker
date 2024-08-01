@@ -1,34 +1,41 @@
-// Import the functions you need from the SDKs you need
+// /Users/ankurbaliga/Projects/pantry-tracker/firebase.js
+
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD9UlpHcCz_IgT8CzGZsX_zGFDYHG_BQ_s",
-  authDomain: "pantry-tracker-eb2e6.firebaseapp.com",
-  projectId: "pantry-tracker-eb2e6",
-  storageBucket: "pantry-tracker-eb2e6.appspot.com",
-  messagingSenderId: "1048890701746",
-  appId: "1:1048890701746:web:fd5dc3892c5146272596ab",
-  measurementId: "G-0G37C7VXHP"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
-// Initialize Firestore
-const firestore = getFirestore(app);
+let firestore;
 
-// Enable offline persistence (optional)
-enableIndexedDbPersistence(firestore)
-  .catch((err) => {
+if (typeof window !== 'undefined') {
+  isSupported().then((supported) => {
+    if (supported) {
+      getAnalytics(app);
+    }
+  });
+
+  firestore = getFirestore(app);
+
+  enableIndexedDbPersistence(firestore).catch((err) => {
     if (err.code === 'failed-precondition') {
       console.log('Persistence failed');
     } else if (err.code === 'unimplemented') {
       console.log('Persistence is not available');
     }
   });
+}
 
 export { firestore };
