@@ -57,9 +57,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Project Setup and Deployment
 
-Ankur successfully configured and deployed this Next.js project with Firebase Firestore and Firebase Analytics on Vercel. The setup includes proper initialization of Firebase services with environment variables stored securely.
+I have successfully configured and deployed this Next.js project with Firebase Firestore and Firebase Analytics on Vercel. The setup includes proper initialization of Firebase services with environment variables stored securely.
 
 Project deployed at: [https://ankur-baliga-pantry-tracker-orpin.vercel.app](https://ankur-baliga-pantry-tracker-orpin.vercel.app)
 ```
-
-Please replace the placeholder values with your actual values.
