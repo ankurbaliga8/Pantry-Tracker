@@ -33,7 +33,7 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-actual-messaging-sender-id
 NEXT_PUBLIC_FIREBASE_APP_ID=your-actual-app-id
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your-actual-measurement-id
     </code></pre>
-    <p>Replace the placeholder values with your actual Firebase configuration.</p>
+    <p>Replace the placeholder values with your actual firebase configuration.</p>
 
     <h2>Deploy on Vercel</h2>
     <p>The easiest way to deploy your Next.js app is to use the <a href="https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&
